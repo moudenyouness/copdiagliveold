@@ -1,5 +1,5 @@
 Django==3.2.6
-cmake==3.9.4
+cmake==3.9.6
 fftw==3.3.9
 gunicorn==20.1.0
 matplotlib==3.4.3
