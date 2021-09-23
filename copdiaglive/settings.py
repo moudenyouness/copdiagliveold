@@ -14,7 +14,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'gcot63++*+0$o!qb#9cvbu9wocxllj!$(-3-=#l=#cg9#wm)no'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1','copdiaglive.herokuapp.com']
 
