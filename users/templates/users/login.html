@@ -1,0 +1,40 @@
+{% extends 'users/base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="container-bg">
+    
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-12 mx-auto">
+        
+        <div class="p-5 bg-white rounded shadow-lg" >
+            <div class="text-center">
+                <img class="img-fluid text-center" src="{% static 'img/clogo.png' %}">
+            </div>
+          <!-- <h3 class="mb-3 text-center pt-3">Veuillez s'authentifer SVP</h3>
+           -->
+          <form class="form pt-3" method="POST" action="">
+            {% csrf_token %}
+            <p>
+                <label class="font-500">Nom d'utilisateur</label>
+                <input name="username" class="form-control form-control-lg mb-3" type="text" required>
+                <label class="font-500">Mot de passe</label>
+                <input name="password" class="form-control form-control-lg" type="password">
+            </p>
+            <button class="btn btn-primary btn-lg w-100 shadow-lg">Se Connecter</button>
+          </form>
+          <div class="text-center pt-4">
+          <p class="m-0">Mot de passe oublié? <a href="{% url 'reset_password' %}" class="text-dark font-weight-bold">Réinitialiser votre mot de passe</a></p>
+        </div>          
+        </div>        
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+{% endblock content %}

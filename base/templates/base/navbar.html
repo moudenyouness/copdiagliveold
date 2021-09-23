@@ -1,0 +1,49 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-light">
+  <a class="navbar-brand" href="{% url 'home' %}"> <img src="{% static 'img/clogo.png' %}" alt="logo"> </a>
+  <button class="navbar-toggler bg-primary" type="button" data-toggle="collapse"
+      data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+      aria-expanded="false" aria-label="Toggle navigation" style="color: white; border-radius: 0%; height:40px;">
+      <i class="ti-menu h3" style="margin-bottom: 20px; margin-top: 20px; margin-left: 7px; margin-right: 7px;"></i>
+  </button>
+
+  <div class="collapse navbar-collapse main-menu-item justify-content-end"
+      id="navbarSupportedContent">
+      <ul class="navbar-nav align-items-center">
+          <li class="nav-item active">
+              <a class="nav-link text-primary" style="font-weight: 600;" href="{% url 'home' %}">ACCUEIL</a>
+          </li>
+          
+          <li class="nav-item dropdown show">
+            <a class="nav-link dropdown-toggle text-primary" style="font-weight: 600;" href="{% url 'infos' %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                INFORMATIONS
+            </a>
+            <div class="dropdown-menu show text-success" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item color-green" style="font-weight: 600;" href="{% url 'infos' %}#">BPCO</a>
+                <a class="dropdown-item color-green" style="font-weight: 600;" href="{% url 'infos' %}#symptomes">Symptômes</a>
+                <a class="dropdown-item color-green" style="font-weight: 600;" href="{% url 'infos' %}#causes">Causes</a>
+                <a class="dropdown-item color-green" style="font-weight: 600;" href="{% url 'infos' %}#diagnostic">Diagnostic</a>
+                <a class="dropdown-item color-green" style="font-weight: 600;" href="{% url 'infos' %}#traitement">Traitement</a>
+                <a class="dropdown-item color-green" style="font-weight: 600;" href="{% url 'infos' %}#medicaments">Médicaments</a>
+                <a class="dropdown-item text-success" style="font-weight: 600;" href="{% url 'infos' %}#alimentation">Alimentation</a>
+                <!-- <a class="dropdown-item text-success" style="font-weight: 600;" href="">Stades</a>
+                <a class="dropdown-item text-success" style="font-weight: 600;" href="">Vivre avec</a> -->
+            </div>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link text-primary" style="font-weight: 600;" href="{% url 'stats' %}">STATISTIQUES</a>
+          </li>
+
+          <li class="nav-item">
+              <a class="nav-link text-primary" style="font-weight: 600;" href="{% url 'contact' %}">CONTACT</a>
+          </li>
+          <li class="nav-item nav-full primary-green">
+            <a class="nav-link text-white" style="font-weight: 600;" href="{% url 'result' %}">CONSULTER RÉSULTAT</a>
+          </li>
+          <!-- <li class="nav-item nav-full bg-primary">
+              <a class="nav-link text-white" style="font-weight: 600;" href="#">Prendre un Rendez-vous</a>
+          </li> -->
+          
+      </ul>
+  </div>
+</nav>

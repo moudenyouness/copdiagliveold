@@ -1,0 +1,47 @@
+{% load static %}
+<footer class="footer-area">
+    <div class="footer section_padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-4 col-sm-12 col-md-6 mb-4 mb-xl-0 single-footer-widget">
+                    <h4 class="text-primary">MENU</h4>
+                    <ul>
+                        <li><a href="#">Acceuil</a></li>
+                        <li><a href="#">Informations</a></li>
+                        <li><a href="#">Statistiques</a></li>
+                        <li><a href="#">Contactez-nous</a></li>
+                        <li><a href="#">Consulter Résultat</a></li>
+                        <li><a href="#">Prendre un Rendez-vous</a></li>
+                        <li><a href="{% url 'login' %}">Espace administrateur</a></li>
+                    </ul>
+                </div>
+                <div class="col-xl-8 col-sm-12 col-md-6 mb-4 mb-xl-0 single-footer-widget">
+                    <h4 class="text-primary">Newsletter</h4>
+                    <p>Abonnez-vous à notre newsletter en entrant votre email.</p>
+                    <div class="form-wrap" id="mc_embed_signup">
+                        <form action="" method="get" class="form-inline" novalidate="true">
+                            <input class="form-control" name="EMAIL" placeholder="Votre adresse e-mail" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Email Address '" required="" type="email">
+                            <button class="click-btn btn btn-default text-uppercase">S'ABONNER</button>
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="copyright_part">
+        <div class="container">
+            <div class="row align-items-center">
+                <p class="footer-text m-0 col-lg-8 col-md-12"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright © <script>document.write(new Date().getFullYear());</script> All rights reserved
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                <div class="col-lg-4 col-md-12 text-center text-lg-right footer-social">
+                    <a href="#"><i class="ti-facebook"></i></a>
+                    <a href="#"> <i class="ti-twitter"></i> </a>
+                    <a href="#"><i class="ti-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

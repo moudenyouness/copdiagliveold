@@ -1,0 +1,77 @@
+{% extends 'users/main.html' %}
+
+{% block content %}
+
+ <!-- Page Heading -->
+ <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Les Administrateurs</h1>
+    {% if request.user.is_superuser %}
+    <a href="{% url 'create-admin' %}?next=/admin/" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+            class="fas fa-user-plus fa-sm text-white-50"></i> Ajouter</a>
+    {% endif %}
+</div>
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card shadow">
+            
+            <div class="table-responsive">
+                <table class="table table-hover dataTable" id="dataTable" style="width: 100%;" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                    <thead>
+                        <tr role="row" class="text-center">
+                            <th rowspan="1" colspan="1"></th>
+                            <th rowspan="1" colspan="1">Nom</th>
+                            <th rowspan="1" colspan="1">Prenom</th>
+                            <th rowspan="1" colspan="1">CIN</th>
+                            <th rowspan="1" colspan="1">Email</th>
+                            {% if request.user.is_superuser and request.user.is_staff %}
+                            <th rowspan="1" colspan="1">Dernier Login</th>
+                            <th rowspan="1" colspan="1">Date Ajouté</th>
+                            <th rowspan="1" colspan="2"></th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                    <tbody>
+
+
+                        {% for admin in admins %}
+                        <tr class="text-center">
+                            
+                            <td><a href="{% url 'user-profile' admin.id %}" class="btn btn-info shadow-sm"><i
+                                class="fas fa-eye fa-sm text-white"></i></a></td>
+                            <td>{{admin.nom}}</td>
+                            <td>{{admin.prenom}}</td>
+                            <td>{{admin.cin}}</td>
+                            <td>{{admin.email}}</td>
+                            {% if request.user.is_superuser and request.user.is_staff %}
+                            <td>{% if admin.user.last_login %} {{admin.user.last_login}} {% endif %}</td>
+                            <td>{{admin.user.date_joined}}</td>
+                            
+
+                                <td><a href="{% url 'update-admin' admin.id %}?next=/admin/" class="btn btn-success shadow-sm"><i
+                                class="fas fa-edit fa-sm text-white"></i> </a></td>
+                                <td><a href="{% url 'delete-admin' admin.id %}?next=/admin/" class="btn btn-danger shadow-sm"><i
+                                class="fas fa-trash fa-sm text-white"></i></a></td>
+                                
+                                
+                            {% endif %}
+                        </tr>
+                        {% endfor %}
+
+
+
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+{% endblock content %}

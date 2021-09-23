@@ -1,0 +1,67 @@
+{% extends 'base/main.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+   <!-- banner part start-->
+   <section class="section section_padding hero-accueil">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-xl-6">
+                <div class="section_tittle">
+                    <div class="banner_text_iner">
+                        <h1 class="color-green" style="font-weight: 600;margin-top: 20px;">Bienvenue!</h1>
+                        <p class="text-primary" style="margin-top: 20px;">
+                          La bronchopneumopathie chronique obstructive (BPCO) est une maladie pulmonaire inflammatoire chronique qui provoque une obstruction du flux d'air des poumons. Les symptômes comprennent des difficultés respiratoires, une toux, une production de mucus (expectorations) et une respiration sifflante. Elle est généralement causée par une exposition à long terme à des gaz irritants ou à des particules, le plus souvent provenant de la fumée de cigarette.
+                          </p><!--<p>
+                            Les personnes atteintes de la BPCO courent un risque accru de développer une maladie cardiaque, un cancer du poumon et diverses autres affections.
+                          </p>--><p class="text-primary">
+                            Bien que la BPCO soit une maladie progressive qui s'aggrave avec le temps, la BPCO est traitable. Avec une gestion appropriée, la plupart des personnes atteintes de BPCO peuvent obtenir un bon contrôle des symptômes et une bonne qualité de vie, ainsi qu'un risque réduit d'autres conditions associées.
+                      </p>
+                        <a href="{% url 'infos' %}" class="btn btn-primary">Plus d'informations</a>
+                        
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-lg-6 col-xl-6">
+              <img src="{% static 'img/ability_img.png' %}" alt="">
+            </div> -->
+        </div>
+    </div>
+</section>
+<!-- banner part start-->
+<!-- 
+
+<div class="hero" style="background-image: url({% static 'media/images/hero_1.jpg' %});">
+  <div class="container" style="padding-top: 200px;">
+    <div class="layout">
+      <div class="column column--2of2">
+        <div class=" text-center">
+          <div class="card__body">
+              <h3 class="devInfo__title">Bienvenue!</h3>
+              
+              <p class="" style="margin-top: 40px;">
+                  Chronic obstructive pulmonary disease (COPD) is a chronic inflammatory lung disease that causes obstructed airflow from the lungs. Symptoms include breathing difficulty, cough, mucus (sputum) production and wheezing. It's typically caused by long-term exposure to irritating gases or particulate matter, most often from cigarette smoke.
+                  </p><p>
+                  People with COPD are at increased risk of developing heart disease, lung cancer and a variety of other conditions.
+                  </p><p>
+                  Although COPD is a progressive disease that gets worse over time, COPD is treatable. With proper management, most people with COPD can achieve good symptom control and quality of life, as well as reduced risk of other associated conditions.
+              </p>
+              
+      
+            <p><a href="{% url 'result' %}" class="btn btn--sub btn--lg" style="margin-top: 60px;">Prediction</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="column column--1of2">
+          
+      </div>
+    </div>
+  </div>
+</div> -->
+
+  
+
+{% endblock content %}

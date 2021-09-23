@@ -1,0 +1,86 @@
+{% extends 'base/main.html' %}
+
+{% load static %}
+{% block content %}
+
+<section class="contact-section section_padding hero-custom">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="contact-title text-primary">Contactez Nous</h2>
+        </div>
+        <div class="col-lg-8">
+          <form class="form-contact contact_form" action="" method="POST" id="contactForm">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class=" text-primary" style="font-weight: 600;">{{form.name.label}}</label>
+                    {{form.name}}
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class=" text-primary" style="font-weight: 600;">{{form.email.label}}</label>
+                    {{form.email}}
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-group">
+                    <label class=" text-primary" style="font-weight: 600;">{{form.subject.label}}</label>
+                    {{form.subject}}
+                  </div>
+                </div>
+              <div class="col-12">
+                <div class="form-group">
+                    <label class=" text-primary" style="font-weight: 600;">{{form.body.label}}</label>
+                    {{form.body}}
+                </div>
+              </div>
+            </div>
+            <div class="form-group mt-3">
+              <button type="submit" class="button button-contactForm btn_1 btn-block">ENVOYER</button>
+            </div>
+          </form>
+        </div>
+        <div class="col-lg-4">
+          <div class="media contact-info">
+            <span class="contact-info__icon"><i class="ti-location-pin text-primary"></i></span>
+            <div class="media-body">
+              <h3 class="text-primary" style="font-weight: 600;">Rabat, Maroc.</h3>
+              <p>4 Avenue Ibn Batouta BP 1014 RP, RABAT</p>
+            </div>
+          </div>
+          <div class="media contact-info">
+            <span class="contact-info__icon"><i class="ti-headphone-alt text-primary"></i></span>
+            <div class="media-body">
+              <h3 class="text-primary" style="font-weight: 600;">+212 5377-71834</h3>
+              <p>Du lundi au vendredi de 08:00–12:00, 14:00–18:00</p>
+            </div>
+          </div>
+          <div class="media contact-info">
+            <span class="contact-info__icon "><i class="ti-email text-primary"></i></span>
+            <div class="media-body">
+              <h3 class="text-primary" style="font-weight: 600;">contact@copdiag.com</h3>
+              <p>Contactez-nous à tout moment!</p>
+            </div>
+          </div>
+          <p>
+            <iframe class="border border-primary" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3307.398846871314!2d-6.840427485399215!3d34.00797172751048!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda76c80825a1893%3A0xbf497c49ab56246a!2sFacult%C3%A9%20des%20Sciences%20de%20Rabat!5e0!3m2!1sfr!2sma!4v1629327028795!5m2!1sfr!2sma" style="border: 3px; width: 95%" width="95%" height="300px" allowfullscreen="" loading=""></iframe>
+        </p>
+        </div>
+      </div>
+    </div>
+    
+  <!-- <div class="container">
+      <div class="row">
+          <div class="col-12">
+              
+          </div>
+      </div>
+  </div> -->
+
+</section>
+
+{% endblock content %}

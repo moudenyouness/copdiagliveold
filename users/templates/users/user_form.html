@@ -1,0 +1,66 @@
+{% extends 'users/main.html' %}
+
+
+{% block content %}
+<style>
+    label{
+        font-weight: 500;
+    }
+    input[type='file']{
+        min-height: 80px;
+        /* border-radius: 0%; */
+        border-left: .25rem solid #36b9cc!important;
+    }
+        
+    li{
+            list-style-type:none;
+            padding-left: 10px;
+        }
+</style>
+<div class="container">
+    <div class="row">
+        <p>
+            <a href="{{request.GET.next}}" style="margin-left: 10px;" class="btn 
+                {% if page == 'update' %} btn-success {% else %} btn-primary{% endif %} btn-circle btn-lg">
+                <i class="fas fa-chevron-left"></i>
+            </a>
+        </p>
+    </div>
+    
+    <div class="card">        
+        <div class="card-body container">
+            <form class="form" method="POST" action="" enctype="multipart/form-data">
+                {% csrf_token %}
+                
+                {% if page == 'update' %}
+                <h3 class="text-center">Modifier</h3>
+                {% else %}
+                <h3 class="text-center">Ajouter</h3>
+                {% endif %}
+
+                {% for field in form %}
+                <div class="mb-1">
+                    <label class="form-label" for="formInput#text">{{field.label}} </label>
+                    {{field}}
+            
+                    {% for error in field.errors %}
+                    <p style="color:red; font-weight: 600;">{{error}}</p>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+
+                {% if page == 'update' %}
+                <button type="submit" class="btn btn-success btn-block"><h3>Modifier</h3></button>
+                {% else %}
+                <button type="submit" class="btn btn-primary btn-block"><h3>Ajouter</h3></button>
+                {% endif %}
+            
+            </form>
+        </div>
+    </div>
+
+
+    
+</div>
+
+{% endblock content %}

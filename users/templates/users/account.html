@@ -1,0 +1,122 @@
+{% extends 'users/main.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+
+    
+    <div class="card">        
+        <div class="card-body container">
+            <div class="row">
+
+                <div class="col-md-12 col-lg-4 mb-3">
+                    <div class="card">
+                        <div class="card-body container">
+                            <p class="text-center">
+                                <img src="{% static 'img/undraw_profile.svg' %}" />
+                            </p>
+                            <p>
+                                <strong class="text-info"><h4 class="text-center">@{% if profile.username %}{{profile.username}}
+                                    {% endif %} </h4>
+                                </strong>
+                            </p>
+    
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-8 table-responsive">
+                    <div class="container text-center">
+                        {% if profile.user.is_superuser %}
+                        <p class="text-center">
+                            <a class="btn btn-info btn-block text-white" style="font-size: x-large;" 
+                            href="{% url 'edit-account' %}?next=/admin/account">
+                            <i class="fas fa-edit fa-sm btn-block"></i> Modifier</a>
+                        </p>
+                        {% endif %}
+                        
+                        <table class="table table-borderless">
+                            {% if profile.prenom %}
+                            <tr role="row">
+                                <td><h6><strong> Prenom: </strong></h6></td>
+                                <td>
+                                    {{profile.prenom}}
+                                </td>
+                            </tr>
+                            {% endif %}
+                            {% if profile.nom %}
+                            <tr role="row">
+                                <td><h6><strong>Nom: </strong></h6></td>
+                                <td>
+                                    {{profile.nom}}
+                                </td>
+                            </tr>
+                            {% endif %}
+                            {% if profile.cin %}
+                            <tr role="row">
+                                <td><h6><strong>CIN: </strong></h6></td>
+                                <td>
+                                    {{profile.cin}}
+                                </td>
+                            </tr>
+                            {% endif %}
+                            {% if profile.email %}
+                            <tr role="row">
+                                <td><h6><strong>Email: </strong></h6></td>
+                                <td>
+                                    {{profile.email}}
+                                    
+                                </td>
+                            </tr>
+                            {% endif %}
+                            {% if profile.location %}
+                            <tr role="row">
+                                <td><h6><strong>Ville: </strong></h6></td>
+                                <td>
+                                    {{profile.location}}
+                                    
+                                </td>
+                            </tr>
+                            {% endif %}
+                            {% if profile.age %}
+                            <tr role="row">
+                                <td><h6><strong>Age: </strong></h6></td>
+                                <td>
+                                    {{profile.age}}
+                                    
+                                </td>
+                            </tr>
+                            {% endif %}
+                            {% if profile.gender %}
+                            <tr role="row">
+                                <td><h6><strong>Sexe: </strong></h6></td>
+                                <td>
+                                    {{profile.gender}}
+                                    
+                                </td>
+                            </tr>
+                            {% endif %}
+                            {% if profile.phone %}
+                            <tr role="row">
+                                <td><h6><strong>Telephone: </strong></h6></td>
+                                <td>
+                                    {{profile.phone}}
+                                    
+                                </td>
+                            </tr>
+                            {% endif %}
+                        </table>
+
+
+                    </div>
+                   
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    
+</div>
+
+{% endblock content %}

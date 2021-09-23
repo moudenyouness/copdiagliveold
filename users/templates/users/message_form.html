@@ -1,0 +1,42 @@
+{% extends 'users/main.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <p>
+                <a href="{{request.GET.next}}" class="btn btn-primary btn-circle btn-lg" style="margin-left: 10px;">
+                <i class="fas fa-chevron-left"></i>
+            </a>
+        </p>
+    </div>
+    
+    <div class="card">        
+        <div class="card-body container">
+            <form class="form" method="POST" action="">
+                {% csrf_token %}
+                
+                <p>vous êtes sur le point d'envoyer un message à <strong class="text-dark">{{receiver.prenom}} {{receiver.nom}}</strong></p>
+                
+                {% for field in form %}
+                <div class="mb-3">
+                    <label class="form-label" for="formInput#text">{{field.label}} </label>
+                    {{field}}
+            
+                    {% for error in field.errors %}
+                    <p style="color:red; font-weight: 600;">{{error}}</p>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+
+                
+                <button type="submit" class="btn btn-primary btn-block"><h3>ENVOYER</h3></button>
+                
+            </form>
+        </div>
+    </div>
+
+
+    
+</div>
+
+{% endblock content %}

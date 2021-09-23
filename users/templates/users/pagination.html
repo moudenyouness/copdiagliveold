@@ -1,0 +1,33 @@
+{% if query_set.has_other_pages %}
+
+<div class="d-sm-flex align-items-center justify-content-center text-center">
+    <ul class="pagination">
+
+    {% if query_set.has_previous %}
+    <li><a role="button" style="margin-left: 3px; margin-right: 3px;" class="btn btn-primary" href="?page={{query_set.previous_page_number}}" data-page="{{query_set.previous_page_number}}">❮ Prev</a></li>
+    
+    {% else %}
+    <li><a role="button" style="margin-left: 3px; margin-right: 3px;" class="btn btn-primary disabled">❮ Prev</a></li>
+    {% endif %}
+
+
+    {% for page in custom_range %}
+    {% if page == query_set.number %}
+    <li><a role="button" style="margin-left: 3px; margin-right: 3px;" class="btn btn-primary active" href="?page={{page}}" data-page="{{page}}">{{page}}</a></li>
+    {% else %}
+    <li><a role="button" style="margin-left: 3px; margin-right: 3px;" class="btn btn-primary" href="?page={{page}}" data-page="{{page}}">{{page}}</a></li>
+    {% endif %}
+    {% endfor %}
+    
+    
+    {% if query_set.has_next %}
+    <li><a role="button" style="margin-left: 3px; margin-right: 3px;" class="btn btn-primary" href="?page={{query_set.next_page_number}}" data-page="{{query_set.next_page_number}}">Next ❯</a></li>
+    {% else %}
+    <li><a role="button" style="margin-left: 3px; margin-right: 3px;" class="btn btn-primary disabled">Next ❯</a></li>
+    {% endif %}
+
+
+    </ul>
+</div>
+
+{% endif %}

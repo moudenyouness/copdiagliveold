@@ -1,0 +1,73 @@
+{% extends 'users/base.html' %}
+{% load static %}
+{% block content %}
+
+
+  <style>
+    input[type='text'],
+    input[type='email'],
+    input[type='password']{
+    width: 100%;
+    padding: 1.2rem 1.5rem;
+    border-radius: 0.5rem;
+    border: 2px solid #4e73df;
+    transition: all 0.3s ease-in-out;
+    }
+
+    input[type='text']:focus,
+    input[type='email']:focus,
+    input[type='password']:focus
+    input[type='text']:active,
+    input[type='email']:active,
+    input[type='password']:active {
+    outline: none;
+    border: 2px solid #4e73df;
+    }
+  </style>
+  
+  
+    <div class="container-bg">
+        
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-12 mx-auto">
+            
+            <div class="p-5 bg-white rounded shadow-lg text-center" >
+              <div class="text-center">
+                <h3>Entrez le nouveau mot de passe</h3>
+                <p>Veuillez entrer votre nouveau mot de passe deux fois afin que nous puissions vérifier que vous l'avez saisi correctement.</p>
+              
+        
+                <form class="form" method="POST" >
+                  {% csrf_token %}
+                  {% for field in form %}
+                  <div class="form__field">
+                    <label for="formInput#text">{{field.label}} </label>
+                    {{field}}
+        
+        
+                    {% for error in field.errors %}
+                    <p style="color:red;">{{error}}</p>
+                    {% endfor %}
+                  </div>
+                  {% endfor %}
+        
+                  <div class="auth__actions">
+                    <input class="btn btn-primary btn-lg w-100 shadow-lg" type="submit" value="Réinitialiser Mon Mot de Passe" />
+                  </div>
+                  <div class="pt-4">
+                    <a href="{% url 'login' %}">Se connecter</a>
+                  </div>
+        
+                </form>
+              </div>
+            </div>        
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+{% endblock content %}

@@ -1,0 +1,113 @@
+{% extends 'base/main.html' %}
+{% load static %}
+{% block content %}
+<div class="alert-content" style="display: flex; justify-content: center;">
+    {% if resultat == 'Positive' %}
+    <div class="alert alert--error" style="position: fixed; z-index: 10000;top: 10px;">
+        <p class="alert__message">
+            
+                Bienvenue <u class=" text-danger" style="font-weight: 700;">{{patient.prenom}} {{patient.nom}}</u>
+                <br>
+                Votre résultat de prediction de la BPCO est: <u class="text-danger" style="font-weight: 700;">{{resultat}}</u>.
+                <br>
+                Nous somme désolé d'apprendre que vous êtes malade. <br>
+                Nous vous souhaitons un bon rétablissement! Rétablis-toi vite!
+        </p>
+        <button class="alert__close" data-bs-dismiss="alert" aria-label="Close">x</button>
+    </div>
+    {% elif resultat == 'Negative' %}
+    <div class="alert alert--success" style="position: fixed; z-index: 10000;top: 10px;">
+        <p class="alert__message">
+            
+                Bienvenue <u class="text-success" style="font-weight: 700;">{{patient.prenom}} {{patient.nom}}</u>
+                <br>
+                Votre résultat de prediction la BPCO est: <u class="text-success" style="font-weight: 700;">{{resultat}}</u>.
+                <br>
+                Nous vous souhaitons une bonne santé.
+            
+        </p>
+        <button class="alert__close" data-bs-dismiss="alert" aria-label="Close">x</button>
+    </div>
+    {% endif %}
+</div>
+<section class="section section_padding hero-accueil">
+    <div class="container">
+        <div class="row justify-content-center" style="margin-top:20px;">
+            
+                <div class="section_tittle text-center">
+                    <div class="container card">
+                        <form class="form form-contact contact_form card-body" method="GET" action="">
+                            <h2 class="text-primary" style="margin-top: 40px;">Consulter les Données</h2>
+                            <p>
+                                <div class="form-group" style="margin-top: 40px;">
+                                    <label class="h2" for="formInput#text"><h3 class="text-primary">Entrez votre CIN:</h3> </label>
+                                    <input class="form-control form-contact text-primary border border-primary" id="formInput#text" type="text" name="cin"
+                                    placeholder="e.g. ID000000" value="{{cin}}" />
+                                </div>
+                            </p>
+                            <p>
+                                <div class="form-group mt-3">
+                                    <input type="submit" class="button button-contactForm btn_1 btn-block" value="VALIDER" />
+                                </div>
+                            </p>
+                        </form>
+
+                        
+                    </div>
+                </div>
+            
+        </div>
+    </div>
+</section>
+
+
+
+<!-- 
+<main class="formPage my-xl">
+    <div class="content-box">
+        <div class="formWrapper text-center">
+            <h4>Consulter les Données</h4>
+            <form class="form" method="GET" action="">
+                
+                <div class="form__field">
+                    <label for="formInput#text">Entrez votre CIN: </label>
+                    <input class="input input--text" id="formInput#text" type="text" name="cin"
+                        placeholder="e.g. ID000000" value="{{cin}}" />
+                </div>
+
+                <input class="btn btn--sub btn--lg  my-md" type="submit" value="Valider" />
+            </form>
+
+            {% if resultat == 'Positive' %}
+            <div class="alert alert--error">
+                <div class="alert__message">
+                    <div>
+                        Bienvenue <u style="font-weight: 700;">{{patient.prenom}} {{patient.nom}}</u>!
+                        <br>
+                        Votre résultat de prediction du COPD est: <u style="font-weight: 700;">{{resultat}}</u>.
+                        <br>
+                        Nous somme désolé d'apprendre que vous êtes malade. 
+                        Nous vous souhaitons un bon rétablissement! Rétablis-toi vite!
+                    </div>
+                </div>
+            </div>
+            {% elif resultat == 'Negative' %}
+            <div class="alert alert--success">
+                <div class="alert__message">
+                    <div>
+                        Bienvenue <u style="font-weight: 700;">{{patient.prenom}} {{patient.nom}}</u>!
+                        <br>
+                        Votre résultat de prediction du COPD est: <u style="font-weight: 700;">{{resultat}}</u>.
+                        <br>
+                        Nous vous souhaitons une bonne santé.
+                    </div>
+                    
+                </div>
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
+</main> -->
+
+{% endblock content %}

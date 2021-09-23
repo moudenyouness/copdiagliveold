@@ -1,0 +1,1 @@
+web: gunicorn copdiaglive.wsgi --log-file -

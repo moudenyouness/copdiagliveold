@@ -1,0 +1,127 @@
+{% extends 'users/main.html' %}
+
+{% block content %}
+
+
+
+ <!-- Page Heading -->
+ <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Les Patients</h1>
+    {% if request.user.is_staff == True and request.user.is_superuser == False %}
+    <a href="{% url 'create-patient' %}?next=/admin/patients" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+            class="fas fa-user-plus fa-sm text-white-50"></i> Ajouter Un Patient</a>
+    {% endif %}
+</div>
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card shadow">
+            <div class="card-body">
+                
+            <form class="form mb-3" action="" method="get">
+                <div class="row">
+                    <p class="">
+                        <div class="col-md-6"></div>
+                        <div class="col-md-6">
+                            
+                            <div class="input-group">
+                                <input type="text" class="form-control bg-light border-1" name="search_query" 
+                                placeholder="Saisissez le CIN, Nom ou l'email du Patient... " value="{{search_query}}"
+                                aria-label="Search" aria-describedby="basic-addon2">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="submit">
+                                        <i class="fas fa-search fa-sm"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                    </p>
+                </div>
+            </form>
+
+            <div class="table-responsive mb-1">
+                            
+                <table class="table table-hover dataTable" id="dataTable" style="width: 100%;" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                    
+                    <thead>
+                        <tr role="row" class="text-center">
+                            
+                            <th rowspan="1" colspan="1"></th>
+                            <th rowspan="1" colspan="1">Nom</th>
+                            <th rowspan="1" colspan="1">Prenom</th>
+                            <th rowspan="1" colspan="1">CIN</th>
+                            <th rowspan="1" colspan="1">Email</th>
+                            <th rowspan="1" colspan="1">Résultat</th>
+                            {% if request.user.is_staff and request.user.is_superuser == False %}
+                            <th rowspan="1" colspan="1">Status</th>
+                            {% else %}
+                            <th rowspan="1" colspan="1">Envoyé</th>
+                            {% endif %}
+                            <th rowspan="1" colspan="1"></th>
+                            <th rowspan="1" colspan="1"></th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        {% for patient in patients %}
+                        <tr class="text-center">
+                            <td><a href="{% url 'patient' patient.id %}" class="btn btn-info shadow-sm"><i
+                                class="fas fa-eye fa-sm text-white"></i></a></td>
+                            <td>{{patient.nom}}</td>
+                            <td>{{patient.prenom}}</td>
+                            <td>{{patient.cin}}</td>
+                            <td>{{patient.email}}</td>
+                            {% if patient.result %}
+                            <td class="text-danger"><strong>Positive</strong> </td>
+                            {% else %}
+                            <td class="text-success"><strong>Négative</strong> </td>
+                            {% endif %}
+
+                            <td>
+                                {% if patient.is_sent %}
+                                    {% if request.user.is_staff and request.user.is_superuser == False %}
+                                    <button class="btn btn-secondary diabled" disabled>Envoyer</button>
+                                    {% else %}
+                                    <span class="text-success"><strong><i
+                                        class="fas fa-check fa-sm"></i></span></div>
+                                    {% endif %}
+                                {% else %}
+                                    {% if request.user.is_staff and request.user.is_superuser == False %}
+                                    <a href="{% url 'send-result' patient.id %}?next=/admin/patients" class="btn btn-success shadow-sm">Envoyer</a>
+                                    {% else %}
+                                    <span class="text-danger"><strong><i
+                                        class="fas fa-times fa-sm"></i></strong> </span>
+                                    {% endif %}
+                                {% endif %}
+                            
+                            </td> 
+
+                            <td><a href="{% url 'update-patient' patient.id %}?next=/admin/patients" class="btn btn-success shadow-sm"><i
+                                class="fas fa-edit fa-sm text-white"></i></a></td>
+                            <td><a href="{% url 'delete-patient' patient.id %}?next=/admin/patients" class="btn btn-danger shadow-sm"><i
+                                class="fas fa-trash fa-sm text-white"></i></a></td>
+                        </tr>
+                        {% endfor %} 
+                    </tbody>
+                </table>
+
+            </div>
+
+            {% include 'users/pagination.html' with query_set=patients custom_range=custom_range %}
+
+        
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock content %}
