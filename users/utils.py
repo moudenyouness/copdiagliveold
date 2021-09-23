@@ -18,61 +18,9 @@ ROOT = settings.MEDIA_ROOT
 DIR = settings.MEDIA_URL
 BASE_DIR = settings.BASE_DIR
 
-r = robjects.r
-r('''keeps <- c("meanfreq","sd","median","Q25", "Q75","IQR","skew","kurt","sp.ent","sfm","mode", "centroid","meanfun","minfun","maxfun","meandom","mindom","maxdom","dfrange", "modindx")
-    library(tuneR)
-    library(seewave)
-    library(warbleR)
-    ''')
 
 def predictResult(filename):
     result = 0
-    model = None
-    
-    os.chdir(ROOT)
-    
-    robjects.globalenv['fileName'] = filename
-    r('''
-        data <- data.frame()
-        data <- data.frame(fileName, 0, 0, 20)
-        names(data) <- c('sound.files', 'selec', 'start', 'end')
-        a <- specan(X=data , bp = c(0,22), wl = 2048, threshold = 5, parallel = 1)
-        acoustics = a[keeps]
-        ''')
-    acoustics = robjects.r.acoustics
-
-    meanfreq = (acoustics[0])[0]
-    sd = (acoustics[1])[0]
-    median = (acoustics[2])[0]
-    Q25 = (acoustics[3])[0]
-    Q75 = (acoustics[4])[0]
-    IQR = (acoustics[5])[0]
-    skew = (acoustics[6])[0]
-    kurt = (acoustics[7])[0]
-    sp_ent = (acoustics[8])[0]
-    sfm = (acoustics[9])[0]
-    mode = (acoustics[10])[0]
-    centroid = (acoustics[11])[0]
-    meanfun = (acoustics[12])[0]
-    minfun = (acoustics[13])[0]
-    maxfun = (acoustics[14])[0]
-    meandom = (acoustics[15])[0]
-    mindom = (acoustics[16])[0]
-    maxdom = (acoustics[17])[0]
-    dfrange = (acoustics[18])[0]
-    modindx = (acoustics[19])[0]
-
-    os.chdir(BASE_DIR)
-    
-    f = open('rf_model.sav','rb')
-    model = pickle.load(f)
-    f.close()
-
-    x = [[meanfreq, sd, median, Q25, Q75, IQR, skew, kurt, sp_ent, sfm, mode,
-    centroid, meanfun, minfun, maxfun, meandom, mindom, maxdom, dfrange, modindx]]
-
-    result = int(model.predict(x))
-
     return int(result)
 
 
