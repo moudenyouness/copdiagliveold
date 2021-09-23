@@ -6,14 +6,14 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.conf import settings
 
 import sklearn
-import xgboost as xgb
+#import xgboost as xgb
 import pandas as pd
 import pickle
 import rpy2.robjects as robjects
 import rpy2.robjects.packages as rpackages
 
 
-clf_xg = xgb.XGBClassifier(n_estimators=100) 
+#clf_xg = xgb.XGBClassifier(n_estimators=100) 
 ROOT = settings.MEDIA_ROOT
 DIR = settings.MEDIA_URL
 BASE_DIR = settings.BASE_DIR
